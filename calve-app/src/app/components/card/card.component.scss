@@ -1,0 +1,15 @@
+.card {
+    width: 600px;
+    border: 1px solid #1d1d1d;
+
+    .card-header{
+        display: flex;
+        padding: 2px;
+        border-bottom: 1px solid #1d1d1d;
+    }
+
+    .card-content {
+        height: 600px;
+        overflow: auto;
+    }
+}   
