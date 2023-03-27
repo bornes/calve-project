@@ -1,6 +1,8 @@
 <section class="card">
     <span class="card-header">{{cardTitle}}</span>
     <article class="card-content">
+        <!-- Content projection is a pattern in which we can insert, or project, the content we want to use it inside another 
+            component. For example, we can have a Card component that accepts content provided by another component. -->
         <ng-content></ng-content>
     </article>
 </section>
