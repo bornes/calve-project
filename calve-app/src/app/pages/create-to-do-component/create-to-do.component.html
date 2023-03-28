@@ -1,10 +1,14 @@
 <app-card [cardTitle]="title" >
     <app-input 
         inputType="text" 
-        [inputValue]="inputValue"
-        (inputValueChange)="inputValue = $event"
+        [(inputValue)]="inputValue"
     ></app-input>
+
+
     <button (click)="onClick()"></button>
+
+    Parent component: {{ inputValue }}
+
     <div class="div">
         <p>Paragraph</p>
         <p>Paragraph</p>

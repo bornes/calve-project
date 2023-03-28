@@ -13,7 +13,7 @@ import { InputComponent } from "../../components/input/input.component";
 export class CreateToDoComponent {
   title = "To Do List";
 
-  inputValue = "";
+  inputValue = "teste";
 
   onClick() {
     console.log("Input value: ", this.inputValue);
