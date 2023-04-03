@@ -1,0 +1,8 @@
+<select [ngModel]="selectedValue" (ngModelChange)="selectedValueChange.emit($event)">
+    <option 
+        *ngFor="let option of options"
+        [selected]="option.value === selectedValue" 
+        [value]="option.value">
+            {{ option.label }}
+    </option>
+</select>

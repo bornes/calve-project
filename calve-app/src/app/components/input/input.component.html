@@ -1,3 +1,6 @@
 Input component: {{ inputValue }}
 
-<input [type]="inputType" [(ngModel)]="inputValue" (ngModelChange)="inputValueChange.emit($event)">
+<input 
+    [type]="inputType" 
+    [(ngModel)]="inputValue" 
+    (ngModelChange)="inputValueChange.emit($event)">

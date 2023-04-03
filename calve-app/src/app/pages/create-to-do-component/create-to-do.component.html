@@ -4,10 +4,38 @@
         [(inputValue)]="inputValue"
     ></app-input>
 
-
-    <button (click)="onClick()"></button>
+    <br>
+    <br>
 
     Create page: {{ inputValue }}
+
+    <br>
+    <br>
+
+    <app-button
+        [buttonLabel]="labelIncrement"
+        (buttonClicked)="increment()">
+    </app-button>
+
+    <app-button 
+        [buttonLabel]="labelDecrement"
+        (buttonClicked)="decrement()">
+    </app-button>
+
+    Count: {{ count }}
+
+    <br>
+    <br>
+
+    <app-dropdown
+        [options]="cars"
+        [(selectedValue)]="currentCar">
+    </app-dropdown>
+
+    <br>
+    <br>
+
+    Selected car: {{ currentCar }}
 
     <div class="div">
         <p>Paragraph</p>
