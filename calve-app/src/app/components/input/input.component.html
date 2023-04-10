@@ -1,6 +1,11 @@
-Input component: {{ inputValue }}
-
 <input 
-    [type]="inputType" 
+    [attr.checked]="inputRadioValue === inputValue ? '' : null"
+    [id]="inputId"
+    [type]="inputType"
+    [attr.name]="inputName"
+    [value]="inputRadioValue"
     [(ngModel)]="inputValue" 
-    (ngModelChange)="inputValueChange.emit($event)">
+    (ngModelChange)="onChange($event)" />
+
+<label [for]="labelFor"> {{ inputLabel }} </label>
+

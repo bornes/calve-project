@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -9,17 +9,32 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
 })
-export class InputComponent implements OnChanges {
+export class InputComponent {
   @Input()
   inputValue!: string;
 
   @Input()
-  inputType!: 'text' | 'number';
+  inputType!: 'text' | 'number' | 'radio';
+
+  @Input()
+  inputName!: string;
+
+  @Input()
+  inputId!: string;
+
+  @Input()
+  inputLabel!: string;
+
+  @Input()
+  labelFor!: string;
+
+  @Input()
+  inputRadioValue!: string;
 
   @Output()
   inputValueChange = new EventEmitter<string>()
 
-  ngOnChanges(): void {
-    console.info('on changes', this.inputValue);
+  onChange(changedValue: string){
+    this.inputValueChange.emit(this.inputType === 'radio' ? this.inputRadioValue : changedValue);
   }
 }

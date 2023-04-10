@@ -18,6 +18,14 @@ export class CreateToDoComponent {
 
   inputValue = "default value";
 
+  inputName = "";
+
+  inputLabel = "";
+
+  inputRadioValue = "true";
+
+  labelFor = "";
+
   labelIncrement = "+";
 
   labelDecrement = "-";
@@ -46,6 +54,4 @@ export class CreateToDoComponent {
     this.count = this.count -1;
     // this.count -= 1;
   }
-
-  
 }
