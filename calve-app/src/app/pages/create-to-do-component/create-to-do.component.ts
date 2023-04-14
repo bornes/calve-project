@@ -21,7 +21,11 @@ export class CreateToDoComponent {
   inputValue = "";
 
   addTrack() {
+    /* The push method inserts the inputed value in the trackList's array and the String trim method removes whitespaces 
+    from the beginning and end of the string and returns a new string, without modifying the original string */
     this.trackList.push(this.inputValue.trim());
+
+    // Clears the input after the click on the Add button
     this.inputValue = '';
   }
 }
