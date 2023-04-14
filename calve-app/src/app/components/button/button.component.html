@@ -1,4 +1,5 @@
 <button
+    [disabled]="isDisabled"
     (click)="buttonClicked.emit()"> 
     {{ buttonLabel }}
 </button>

@@ -1,104 +1,17 @@
 <app-card [cardTitle]="title" >
+
+    <ul>
+        <li *ngFor="let track of trackList">{{ track }}</li>
+    </ul>
+
     <app-input 
-        inputType="text" 
         [(inputValue)]="inputValue"
-    ></app-input>
-
-    <br>
-    <br>
-
-    Create page: {{ inputValue }}
-
-    <br>
-    <br>
-
+        inputType="text">
+    </app-input>
     <app-button 
-        [buttonLabel]="labelDecrement"
-        (buttonClicked)="decrement()">
+        buttonLabel="Add" 
+        [isDisabled]="inputValue.trim().length <= 3" 
+        (buttonClicked)="addTrack()">
     </app-button>
 
-    <app-button
-        [buttonLabel]="labelIncrement"
-        (buttonClicked)="increment()">
-    </app-button>
-
-    Count: {{ count }}
-
-    <br>
-    <br>
-
-    <app-dropdown
-        [options]="cars"
-        [(selectedValue)]="currentCar">
-    </app-dropdown>
-
-    <br>
-    <br>
-
-    Selected car: {{ currentCar }}
-
-    <br>
-    <br>
-
-    <app-input
-        inputId="true"
-        inputType="radio"
-        inputName="booleanOption"
-        inputRadioValue="true"
-        inputLabel="True"
-        [(inputValue)]="inputRadioValue"
-        labelFor="true">
-    </app-input>
-
-    <br>
-    <br>
-
-    <app-input 
-        inputId="false"
-        inputType="radio"
-        inputName="booleanOption"
-        inputRadioValue="false"
-        inputLabel="False"
-        [(inputValue)]="inputRadioValue"
-        labelFor="false">
-    </app-input>
-
---> {{ inputRadioValue }}
-
-    <br>
-    <br>
-
-    <div class="div">
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-        <p>Paragraph</p>
-    </div>
-</app-card> 
-
-<app-card cardTitle="XPTO" >
-    <div class="div">
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-        <p>Paragraph XPTO</p>
-    </div>
 </app-card> 
