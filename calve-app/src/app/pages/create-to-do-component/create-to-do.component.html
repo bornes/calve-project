@@ -1,18 +1,42 @@
 <app-card [cardTitle]="title" >
 
     <ul>
-        <li *ngFor="let track of trackList">{{ track }}</li>
+        <li *ngFor="let track of trackList; let i = index">
+            <span 
+                id="span-value"
+                contenteditable="true"
+                [style.textDecoration]="resolvedTrackList.includes(i) ? 'line-through' : 'none'"
+                (blur)="editTrack(i, $event)">{{ track }}</span>
+            <app-button
+                buttonLabel="Remove"
+                (buttonClicked)="removeTrack(i)">
+            </app-button>
+            <app-button
+                [isDisabled]="resolvedTrackList.includes(i)"
+                buttonLabel="Resolve"
+                (buttonClicked)="resolveTrack(i)">
+            </app-button>
+        </li>
     </ul>
 
     <app-input 
         [(inputValue)]="inputValue"
         inputType="text">
     </app-input>
-    
+
     <app-button 
         buttonLabel="Add" 
         [isDisabled]="inputValue.trim().length <= 3" 
         (buttonClicked)="addTrack()">
     </app-button>
+
+    <br>
+    <br>
+
+    Track List Array: {{ trackList | json }}
+    <br>
+    Resolved Track List Array: {{ resolvedTrackList | json }}
+    <br>
+
 
 </app-card> 
