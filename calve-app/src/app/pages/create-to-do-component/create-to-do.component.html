@@ -3,16 +3,15 @@
     <ul>
         <li *ngFor="let track of trackList; let i = index">
             <span 
-                id="span-value"
-                contenteditable="true"
-                [style.textDecoration]="resolvedTrackList.includes(i) ? 'line-through' : 'none'"
-                (blur)="editTrack(i, $event)">{{ track }}</span>
+                [attr.contenteditable]="!track.isResolved"
+                [style.textDecoration]="track.isResolved ? 'line-through' : 'none'"
+                (blur)="editTrack(i, $event)">{{ track.trackName }}</span>
             <app-button
-                buttonLabel="Remove"
+                buttonLabel="Remove"    
                 (buttonClicked)="removeTrack(i)">
             </app-button>
             <app-button
-                [isDisabled]="resolvedTrackList.includes(i)"
+                [isDisabled]="track.isResolved"
                 buttonLabel="Resolve"
                 (buttonClicked)="resolveTrack(i)">
             </app-button>
@@ -35,8 +34,7 @@
 
     Track List Array: {{ trackList | json }}
     <br>
-    Resolved Track List Array: {{ resolvedTrackList | json }}
-    <br>
+
 
 
 </app-card> 

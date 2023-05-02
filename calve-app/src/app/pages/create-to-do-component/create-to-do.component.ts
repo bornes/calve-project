@@ -16,16 +16,25 @@ export class CreateToDoComponent {
 
   title = "Track List";
 
-  trackList = ['Track 1', 'Track 2', 'Track 3', 'Track 4'];
+  // trackList = ['Track 1', 'Track 2', 'Track 3', 'Track 4'];
+
+  trackList = 
+  [
+    {trackName: 'Track 1', isResolved: false}, 
+    {trackName: 'Track 2', isResolved: false}, 
+    {trackName: 'Track 3', isResolved: false}, 
+    {trackName: 'Track 4', isResolved: false}
+  ]
 
   inputValue = "";
 
-  resolvedTrackList: number[] = [];
+  // resolvedTrackList: number[] = [];
  
   addTrack() {
     /* The push method inserts the inputed value in the trackList's array and the String trim method removes whitespaces 
     from the beginning and end of the string and returns a new string, without modifying the original string */
-    this.trackList.push(this.inputValue.trim());
+    // this.trackList.push(this.inputValue.trim());
+    this.trackList.push({trackName: this.inputValue.trim(), isResolved: false});
 
     // Clears the input after the click on the Add button
     this.inputValue = '';
@@ -39,13 +48,14 @@ export class CreateToDoComponent {
   }
 
   editTrack(index: number, inputEvent: any) {
-    this.trackList[index] = inputEvent.target.textContent;
+    // this.trackList[index] = inputEvent.target.textContent;
+    this.trackList[index] = {...this.trackList[index], trackName: inputEvent.target.textContent}
 
     console.log(inputEvent);
   }
 
   resolveTrack(index: number) {
-    this.resolvedTrackList.push(index);
+    this.trackList[index] = {...this.trackList[index], isResolved: true};
 
     // let spanValue = document.getElementById('span-value');
     // spanValue?.contentEditable = false;
