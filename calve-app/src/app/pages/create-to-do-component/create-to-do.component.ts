@@ -4,13 +4,14 @@ import { CardComponent } from '../../components/card/card.component';
 import { InputComponent } from "../../components/input/input.component";
 import { ButtonComponent } from "../../components/button/button.component";
 import { DropdownComponent } from "../../components/dropdown/dropdown.component";
+import { CheckboxComponent } from "../../components/checkbox/checkbox.component";
 
 @Component({
     selector: 'app-create-to-do',
     templateUrl: './create-to-do.component.html',
     styleUrls: ['./create-to-do.component.scss'],
     standalone: true,
-    imports: [CommonModule, CardComponent, InputComponent, ButtonComponent, DropdownComponent]
+    imports: [CommonModule, CardComponent, InputComponent, ButtonComponent, DropdownComponent, CheckboxComponent]
 })
 export class CreateToDoComponent {
 
@@ -20,13 +21,17 @@ export class CreateToDoComponent {
 
   trackList = 
   [
-    {trackName: 'Track 1', isResolved: false}, 
-    {trackName: 'Track 2', isResolved: false}, 
-    {trackName: 'Track 3', isResolved: false}, 
-    {trackName: 'Track 4', isResolved: false}
+    {trackName: 'Track 1', isResolved: false, isListened: true}, 
+    {trackName: 'Track 2', isResolved: false, isListened: false}, 
+    {trackName: 'Track 3', isResolved: false, isListened: false}, 
+    {trackName: 'Track 4', isResolved: false, isListened: false}
   ]
 
   inputValue = "";
+
+  checkboxMessage = "Track already listened?"
+
+  checkboxId = "checkbox";
 
   // resolvedTrackList: number[] = [];
  
@@ -34,7 +39,7 @@ export class CreateToDoComponent {
     /* The push method inserts the inputed value in the trackList's array and the String trim method removes whitespaces 
     from the beginning and end of the string and returns a new string, without modifying the original string */
     // this.trackList.push(this.inputValue.trim());
-    this.trackList.push({trackName: this.inputValue.trim(), isResolved: false});
+    this.trackList.push({trackName: this.inputValue.trim(), isResolved: false, isListened: false});
 
     // Clears the input after the click on the Add button
     this.inputValue = '';
@@ -55,19 +60,14 @@ export class CreateToDoComponent {
   }
 
   resolveTrack(index: number) {
-    this.trackList[index] = {...this.trackList[index], isResolved: true};
-
-    // let spanValue = document.getElementById('span-value');
-    // spanValue?.contentEditable = false;
-
-    // this.trackList[index] = document.getElementById('span-value')?.style.textDecoration = "line-through";
-    // contenteditable = "false;"
-
-    // spanValue?.style.textDecoration = "line-through";
-    // spanValue?.contentEditable = false;
+    this.trackList[index] = {...this.trackList[index], isResolved: true, isListened: true};
 
     // console.log('Span value:', spanValue);
     console.log('Track resolved');
     console.log(index);
+  }
+
+  trackListened(index: number, isListened: boolean) {
+    this.trackList[index] = {...this.trackList[index], isListened};
   }
 }

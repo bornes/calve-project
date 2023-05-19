@@ -15,6 +15,17 @@
                 buttonLabel="Resolve"
                 (buttonClicked)="resolveTrack(i)">
             </app-button>
+            <app-checkbox
+                [checkboxMessage]="checkboxMessage"
+                [checkboxId]="checkboxId+i"
+                [checkboxValue]="track.isListened"
+                (checkboxValueChange)="trackListened(i, $event)">
+            </app-checkbox>
+
+            <!-- <span>{{ trackMessage }}</span>
+            <app-input 
+                inputType="checkbox">
+            </app-input> -->
         </li>
     </ul>
 
@@ -24,7 +35,7 @@
     </app-input>
 
     <app-button 
-        buttonLabel="Add" 
+        buttonLabel="Add"
         [isDisabled]="inputValue.trim().length <= 3" 
         (buttonClicked)="addTrack()">
     </app-button>
@@ -34,7 +45,5 @@
 
     Track List Array: {{ trackList | json }}
     <br>
-
-
 
 </app-card> 

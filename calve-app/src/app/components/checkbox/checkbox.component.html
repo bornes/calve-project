@@ -1,0 +1,7 @@
+<label [for]="checkboxId">{{ checkboxMessage }}</label>
+<input 
+    type="checkbox" 
+    [id]="checkboxId" 
+    [name]="checkboxMessage" 
+    [ngModel]="checkboxValue" 
+    (ngModelChange)="onChange($event)"/>
