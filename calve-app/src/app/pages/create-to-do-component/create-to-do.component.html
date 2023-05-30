@@ -5,21 +5,21 @@
             <span 
                 [attr.contenteditable]="!track.isResolved"
                 [style.textDecoration]="track.isResolved ? 'line-through' : 'none'"
-                (blur)="editTrack(i, $event)">{{ track.trackName }}</span>
+                (blur)="editTrack2(track, $event)">{{ track.trackName }}</span>
             <app-button
                 buttonLabel="Remove"    
-                (buttonClicked)="removeTrack(i)">
+                (buttonClicked)="removeTrack(track.trackId)">
             </app-button>
             <app-button
                 [isDisabled]="track.isResolved"
                 buttonLabel="Resolve"
-                (buttonClicked)="resolveTrack(i)">
+                (buttonClicked)="resolveTrack(track.trackId)">
             </app-button>
             <app-checkbox
                 [checkboxMessage]="checkboxMessage"
                 [checkboxId]="checkboxId+i"
                 [checkboxValue]="track.isListened"
-                (checkboxValueChange)="trackListened(i, $event)">
+                (checkboxValueChange)="trackListened(track.trackId, $event)">
             </app-checkbox>
 
             <!-- <span>{{ trackMessage }}</span>
@@ -47,3 +47,18 @@
     <br>
 
 </app-card> 
+
+<app-card
+    [cardTitle]="resolvedListTitle">
+
+    <ul>
+        <li *ngFor="let track of resolvedTracks()">
+            <span>{{track.trackName}}</span>
+            <app-button  
+                buttonLabel="Unresolve"
+                (buttonClicked)="unresolveTrack(track.trackId)">
+            </app-button>
+        </li>
+        
+    </ul>
+</app-card>
