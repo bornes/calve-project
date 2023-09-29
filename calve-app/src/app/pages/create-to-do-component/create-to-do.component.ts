@@ -87,10 +87,36 @@ export class CreateToDoComponent {
     console.log('Track resolved');
   }
 
-  trackListened(trackId: string, isListened: boolean) {
+  resolveOrUnresolveTrack(trackId: string, isResolved: boolean) {
+    this.trackList = this.trackList.map(track => (track.trackId === trackId ? {...track, isResolved} : track));
+  }
+
+  trackListened(trackId: string) {
     // this.trackList[index] = {...this.trackList[index], isListened};
 
-    this.trackList = this.trackList.map(track => (track.trackId === trackId ? {...track, isListened} : track));
+    /**
+     *
+     * [{trackId: 1}, {trackId: 2}, {trackId: 3, isListened: true}, {trackId: 4}]
+     *
+     * trackId --> 3
+     *
+     * [{trackId: 1}, {trackId: 2}, {trackId: 3, isListened: false}, {trackId: 4}]
+     *  
+     */
+    const mapCallback = (track: Track): Track => {
+
+      if(track.trackId === trackId){
+
+        return { ...track, isListened: !track.isListened }
+
+      }
+
+      return track
+    }
+
+    this.trackList = this.trackList.map(mapCallback);
+
+    // this.trackList = this.trackList.map(track => (track.trackId === trackId ? {...track, isListened: !track.isListened} : track));
   }
 
   resolvedTracks() {
